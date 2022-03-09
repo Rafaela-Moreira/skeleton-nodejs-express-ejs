@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
+const Autor = require("../models/autor");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
+  const autores = await Autor.selecionar()
+  res.json(autores.rows);
   res.render('index', { title: 'Express' });
 });
 
