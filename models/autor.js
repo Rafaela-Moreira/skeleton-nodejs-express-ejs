@@ -14,7 +14,7 @@ class Autor {
 
  static async atualizar(id){
     const connect = await db.connect();
-    const sql = "update autores SET nome=$1 where id = $1)";
+    const sql = "update autores SET nome=$1, sobrenome=$2, data_nascimento=$3 where id = $4)";
     const values = [id]
     return await connect.query(sql, values);
   }
