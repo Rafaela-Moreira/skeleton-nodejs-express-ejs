@@ -9,13 +9,8 @@ router.get('/', async function(req, res, next) {
   /res.render('index', { title: 'Express' });/
 });
 
-router.get('/inserir', async function(req, res, next) {
-  let autor = {
-    nome: "Luiza",
-    sobrenome: "Silva",
-    data_nascimento: "1991-09-01"
-  };
-  const autores = await Autor.inserir(autor);
+router.post('/inserir', async function(req, res, next) {
+  const autores = await Autor.inserir(req.body);
   res.json(autores.rows);
 });
 
