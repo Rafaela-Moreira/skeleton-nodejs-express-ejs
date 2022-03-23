@@ -6,7 +6,7 @@ const Autor = require ("../models/autor");
 router.get('/', async function(req, res, next) {
   const autores = await Autor.selecionar()
   res.json (autores.rows);
-  /res.render('index', { title: 'Express' });/
+  //res.render('index', { title: 'Express' });/
 });
 
 router.post('/inserir', async function(req, res, next) {
@@ -14,11 +14,8 @@ router.post('/inserir', async function(req, res, next) {
   res.json(autores.rows);
 });
 
-router.get('/atualizar', async function(req, res, next) {
-  let autor = {
-    id: "3"
-  }
-  const autores = await Autor.inserir(autor);
+router.put('/atualizar', async function(req, res, next) {
+  const autores = await Autor.atualizar(req.body);
   res.json(autores.rows);
 });
 
