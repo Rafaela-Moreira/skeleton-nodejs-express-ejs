@@ -23,10 +23,10 @@ class Autor {
  static async deletar(id){
     const connect = await db.connect();
     const sql = "delete from autores where id = $1";
-    const values = [id]
-    return await connect.query(sql, values);
+    return await connect.query(sql, [id]);
   }
 
+  
 }
 
 module.exports = Autor;
