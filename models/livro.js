@@ -20,12 +20,12 @@ class Livro {
     return await connect.query(sql, values);
   }
   
- //static async deletarLivro(id){
-   // const connect = await db.connect();
-    //const sql = "delete from livros where id = $1";
-    //const values = [id]
-   // return await connect.query(sql, values);
-  //}
+ static async deletarLivro(id){
+    const connect = await db.connect();
+    const sql = "delete from livros where id = $1";
+    const values = [id]
+    return await connect.query(sql, values);
+  }
 
 }
 
