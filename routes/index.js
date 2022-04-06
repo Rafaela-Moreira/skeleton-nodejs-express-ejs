@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Autor = require ("../models/autor");
+const Livro = require ("../models/livro");
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
@@ -17,6 +18,24 @@ router.post('/inserir', async function(req, res, next) {
 router.put('/atualizar', async function(req, res, next) {
   const autores = await Autor.atualizar(req.body);
   res.json(autores.rows);
+});
+
+//LIVROS
+
+router.get('/selecionarLivro', async function(req, res, next) {
+  const livros = await Livro.selecionarLivro()
+  res.json(livros.rows);
+  /*res.render('index', { title: 'Express' });*/
+});
+
+router.post('/inserirLivro', async function(req, res, next) {
+  const livros = await Livro.inserirLivro(req.body);
+  res.json(livros.rows);
+});
+
+router.put('/atualizarLivro', async function(req, res, next) {
+  const livros = await Livro.atualizarLivro(req.body);
+  res.json(livros.rows);
 });
 
 module.exports = router;
